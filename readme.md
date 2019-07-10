@@ -1,4 +1,4 @@
-# Shallow Dive into Deep Learning
+# Taking the Plunge: Deep Learning in Libraries
 
 Using [backslide](https://github.com/sinedied/backslide).
 
