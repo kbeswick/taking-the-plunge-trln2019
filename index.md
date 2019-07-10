@@ -498,8 +498,9 @@ We are also having our deep learning services output annotations in standardized
 ---
 # Current Work
 
-- We're really into furniture and study spaces
-- How do people use our furniture? Can it be better configured?
+- We're really interested in study spaces and furniture
+- How do people use our furniture? Can it be better configured? Are new
+  spaces being effectively used?
 
 ???
 
@@ -517,7 +518,7 @@ spaces
 Currently we use a tool I mentioned at the beginning of this talk, Suma
 to do this. The use of Suma is very expensive though, because it relies
 on manual data collection by humans. What if we could use deep learning
-to learn more about the use of our furniture?
+to learn more about the use of our furniture and spaces?
 
 ---
 # Approach
