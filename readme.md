@@ -1,5 +1,7 @@
 # Taking the Plunge: Deep Learning in Libraries
 
+http://kevinbeswick.com/taking-the-plunge-trln2019/
+
 Using [backslide](https://github.com/sinedied/backslide).
 
 Install backslide: `npm install -g backslide`
