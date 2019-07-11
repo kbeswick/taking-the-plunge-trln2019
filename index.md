@@ -101,11 +101,11 @@ We built this demo to show that we can do something like this pretty easily. You
 Machine learning can be broadly defined as "A field of computer science that gives computers
 the ability to learn without being explicitly programmed"
 
-There are two main categories of machine learning. Supervised learning is when we have an algorithm that learns how to make predictions based on labeled data it has access to in advance. Examples of supervised approaches are things like linear regression, logistic regression, and random forests. An example problem for supervised learning is given a dataset of historical real estate listings and sold prices, predict the price a home that is being put on the market will sell for.
+There are two main categories of machine learning. Supervised learning is when we have an algorithm that learns how to make predictions based on labeled data it has access to in advance. Examples of supervised approaches are things like linear regression, logistic regression, and random forests. An example problem for supervised learning is given a dataset of historical real estate listings and prices that the homes sold for, predict the price a home will sell for that's being put on the market today.
 
 The other broad category is unsupervised learning, which is concerned with trying to find patterns in unlabeled datasets. An example of this might be classifying unlabeled textual data, like topic modeling or document clustering.
 
-The majority of research so far has been on supervised learning because
+The majority of research so far has been in the area of supervised learning because
 unsupervised learning is a much harder problem.
 
 ---
@@ -182,7 +182,7 @@ Deep learning is also used for Natural Language Processing problems like transla
 <img class="img-small" src="images/siri.jpg"></img>
 
 ???
-Digital assistant examples fall here. For example, take an audio file of a human voice and put it into text so a machine can act on it. Or synthesize this text into speech.
+Audio processing - digital assistant examples fall here. For example, take audio of a human voice and convert it into text so a machine can act on it. Or synthesize some text into human-like speech.
 
 ---
 class: impact
@@ -222,7 +222,9 @@ read slide
 ???
 
 The first point I want to make is that everything is numbers to a neural
-network. So we're making predictions on things like images and text, but
+network, and all the network is really doing is performing calculations on those numbers.
+
+So we're making predictions on things like images and text, but
 first we need to represent these numerically. Computers already do this
 behind the scenes in a lot of cases.
 
@@ -241,23 +243,26 @@ There are similar approaches for text and other data.
 ???
 
 Here's what a standard neural network looks like. They are organized as
-stacked layers of neurons, with connections between them. Each of these
-connections has a numerical weight that represents how strong the
-connection is, and these are what we need to learn as part of the
-training process. These weights are initialized completely randomly before training
+stacked layers of neurons, with connections between them. Each
+connection has a numerical weight that represents how strong the
+connection is, and these weight values are what we need to learn as part of the
+training process. The connection weights are initialized completely randomly before training
 the neural network.
 
-The important thing to note about this diagram is that while
+An important thing to note about this diagram is that while
 I'm showing only a small number of weights, neurons and layers, a real
 model could have millions of neurons, hundreds of layers, and many thousands of weights -
-an extremely large structure to reason about.
+an extremely large structure to reason about. This is why neural
+networks are sometimes described as black boxes - we know how they work,
+but they are so big that it's sometimes difficult to interrogate specific
+decisions they make.
 
 Our input image is fed into the network through the input layer on the left. The data flows
 through the neurons and connections in the hidden layers in the middle, until a prediction is made at the output layer at the
 end of the network.
 
-Each neuron does a similar mathematical operation - apply the weights, combine the incoming
-signals, run through an activation function, and repeat. The activation function
+Each neuron does a similar mathematical operation - apply the weights to the incoming signals, combine them,
+run through an activation function, and repeat. The activation function
 represents whether the neuron fires or not. Over time, each neuron
 learns to detect a specific feature in the image. Earlier neurons (to
 the left side of the network) learn to detect simpler features like edges, and later neurons detect higher level
@@ -275,7 +280,7 @@ our image was of a cat or a dog.
 ???
 
 To train the network, we show it an image in the training set, and we get a score at the end of how likely the network
-thinks the image is of a cat or of a dog. The networks predictions will be completely random at first since the weights
+thinks the image is of a cat or of a dog. The network's predictions will be completely random at first since the weights
 were initialized randomly. Since the training images are labeled and we have the right answer, that this is
 a dog, we can say we'd like the probability for dog to go up, and for
 all other classes to go down. We can achieve this using a mathematical process called back
@@ -314,7 +319,6 @@ makes good predictions across the entire training set.
 - When the model has been trained on a large representative dataset,
   it should be very good at distinguishing between cats and dogs.
 - Our model is now ready to be put into production within an application that will feed it new data.
-  The process of getting predictions from your model on unseen data is called inference.
 - But if you showed it a picture of a horse, it would be very confused, since it
   has never seen a horse before. It would likely report low confidence
   scores for both cat and dog
@@ -363,13 +367,13 @@ The model then makes predictions given NEW, untrained screenshots, and generates
 ???
 This is an early stage demo trained on a single lap around the track. It hasn't learned much yet, it's not turning.
 
+A few notes on how this is working. You are seeing the prediction part of deep learning. We are taking rapid screenshots of the game, passing the image (as a multi-dimensional array of numbers) to our model, getting a prediction (controller input), and then sending that input into MarioKart.
+
 ---
 <video controls src="videos/2.mov" type="video/mp4" class="img-squash img-center"/>
 
 ???
 This example is a model that has been trained on 3 laps around the track. You can see it can now do basic turns.
-
-A few notes on how this is working. You are seeing the prediction part of deep learning. We are taking rapid screenshots of the game, passing the image (as a multi-dimensional array of numbers) to our model, getting a prediction (controller input), and then sending that input into MarioKart.
 
 The window on the right is showing the input that is being sent. Notice how quickly the predictions are being made, every line in the terminal output is a prediction.
 
@@ -506,11 +510,11 @@ We are also having our deep learning services output annotations in standardized
 
 I want to talk about something we're currently exploring. I want to
 emphasize that this is not a production application, and there are a lot
-of internal conversations that need to happen before we consider
+of internal conversations that would need to happen before we even consider
 productionizing something like this.
 
-If you've been to our libraries, you know we're very into furniture and
-study spaces. In order to be responsible stewards of state and private
+If you've been to our libraries, you know we're very into study spaces
+and furniture. In order to be responsible stewards of state and private
 funds, we'd like to maximize the use of our study spaces and furniture.
 To help with this, we conduct periodic assessements of how people use our
 spaces
